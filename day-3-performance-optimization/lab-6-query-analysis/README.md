@@ -1,0 +1,1 @@
+lab-6-query-analysis provides deep insights into Snowflake's query execution through the platform's extensive metadata views. You'll analyze query history to identify performance patterns, use Snowpark to automate query performance analysis, and implement systematic approaches to query tuning. This enables you to take a data-driven approach to performance optimization.

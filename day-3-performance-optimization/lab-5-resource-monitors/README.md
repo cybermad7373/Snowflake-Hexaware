@@ -1,0 +1,1 @@
+lab-5-resource-monitors focuses on cost management through Snowflake's resource monitoring capabilities. You'll create resource monitors that track credit usage across different warehouses, set up alerts for approaching budget limits, and implement governance policies that prevent runaway costs. This is crucial for maintaining control over cloud data platform expenses.

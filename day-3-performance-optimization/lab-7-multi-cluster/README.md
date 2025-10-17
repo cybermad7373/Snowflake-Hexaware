@@ -1,0 +1,1 @@
+lab-7-multi-cluster explores advanced warehouse configurations for handling complex workload patterns. You'll set up multi-cluster warehouses that automatically scale to handle concurrent users, test different scaling policies for bursty versus steady workloads, and implement workload isolation strategies. This ensures your platform can handle enterprise-scale usage patterns.

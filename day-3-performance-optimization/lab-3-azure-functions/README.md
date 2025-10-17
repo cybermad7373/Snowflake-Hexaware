@@ -1,0 +1,1 @@
+lab-3-azure-functions introduces serverless computing for automating Snowflake operations. You'll create Azure Functions that trigger Snowpipe loads based on external events, implement functions for automated warehouse management, and build serverless APIs for Snowflake data access. This demonstrates how to extend Snowflake's capabilities with cloud-native serverless patterns.

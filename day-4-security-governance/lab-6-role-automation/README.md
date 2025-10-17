@@ -1,0 +1,1 @@
+lab-6-role-automation streamlines security management through automated role assignment and permission governance. You'll implement Azure Logic Apps that automatically provision Snowflake roles based on business events, create self-service role request workflows, and set up periodic permission reviews. This reduces the administrative overhead of security management.

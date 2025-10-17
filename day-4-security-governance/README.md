@@ -1,0 +1,1 @@
+Day 4 README.md focuses on the critical security, governance, and data protection capabilities that are essential for enterprise data platforms. This document outlines how you'll implement comprehensive security controls, protect sensitive data through masking and encryption, track data changes through CDC patterns, and automate security management.

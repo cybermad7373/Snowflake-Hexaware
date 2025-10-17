@@ -1,0 +1,1 @@
+lab-5-key-vault integrates Azure Key Vault for secure credential management in your Snowpark applications. You'll store Snowflake connection credentials in Key Vault, implement secure credential retrieval in Databricks notebooks, and set up automatic credential rotation policies. This eliminates the need to store sensitive credentials in code or configuration files.
