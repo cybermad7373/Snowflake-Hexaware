@@ -1,188 +1,261 @@
 ```
-snowflake-databricks-learning/
+snowflake-azure-databricks-snowpark/
 │
-├── README.md                          # Overall repository description
-├── setup/
-│   ├── environment-setup.md           # Prerequisites & environment setup
-│   └── azure-snowflake-config.md      # Azure-Snowflake connectivity setup
+├── 00-prerequisites-setup/
+│   ├── README.md
+│   ├── scripts/
+│   │   ├── 01-azure-setup.ps1
+│   │   ├── 02-snowflake-setup.sql
+│   │   └── 03-databricks-setup.py
+│   └── docs/
+│       ├── environment-requirements.md
+│       └── troubleshooting-guide.md
 │
-├── day-1-introduction/
-│   ├── README.md                      # Day 1 objectives & overview
-│   ├── lab-1-sso-setup/
-│   │   ├── azure-ad-config.json
-│   │   └── snowflake-sso-setup.sql
-│   ├── lab-2-ddl-operations/
-│   │   ├── create-database-schema.sql
-│   │   ├── create-tables.sql
-│   │   └── sample-data-load.sql
-│   ├── lab-3-databricks-connector/
-│   │   ├── snowflake-connector.py
-│   │   └── databricks-config.json
-│   ├── lab-4-adls-mount/
-│   │   ├── mount-adls.py
-│   │   └── load-to-snowflake.py
-│   ├── lab-5-rbac-setup/
-│   │   ├── create-roles.sql
-│   │   ├── assign-privileges.sql
-│   │   └── databricks-user-setup.sql
-│   ├── lab-6-marketplace/
-│   │   ├── marketplace-dataset.sql
-│   │   └── sample-queries.sql
-│   ├── lab-7-snowpark-intro/
-│   │   ├── snowpark-basic.py
-│   │   └── query-snowflake.py
-│   └── case-study/
-│       ├── sql-server-extract.py
-│       ├── databricks-transform.py
-│       └── snowflake-load.py
+├── 01-core-architecture-setup/
+│   ├── README.md
+│   ├── topics/
+│   │   ├── 01-snowflake-architecture/
+│   │   ├── 02-azure-databricks-overview/
+│   │   ├── 03-snowpark-api-intro/
+│   │   ├── 04-adls-snowflake-stages/
+│   │   ├── 05-azure-ad-integration/
+│   │   └── 06-rbac-security/
+│   └── labs/
+│       ├── lab-01-snowflake-azure-ad-sso/
+│       ├── lab-02-database-schema-creation/
+│       ├── lab-03-databricks-snowflake-connector/
+│       ├── lab-04-adls-mounting-data-loading/
+│       ├── lab-05-rbac-setup/
+│       ├── lab-06-snowflake-marketplace/
+│       └── lab-07-snowpark-basic-queries/
 │
-├── day-2-data-ingestion/
-│   ├── README.md                      # Day 2 objectives & overview
-│   ├── lab-1-copy-into/
-│   │   ├── create-external-stage.sql
-│   │   ├── copy-into-command.sql
-│   │   └── adls-to-snowflake.py
-│   ├── lab-2-snowpipe/
-│   │   ├── snowpipe-setup.sql
-│   │   ├── event-grid-config.json
-│   │   └── auto-ingestion-setup.py
-│   ├── lab-3-pyspark-transform/
-│   │   ├── pyspark-transformations.py
-│   │   └── snowpark-dataframe.py
-│   ├── lab-4-delta-lake/
-│   │   ├── create-delta-table.py
-│   │   ├── delta-to-snowflake.py
-│   │   └── snowpark-delta-integration.py
-│   ├── lab-5-adf-orchestration/
-│   │   ├── adf-pipeline.json
-│   │   ├── databricks-activity.json
-│   │   └── snowflake-copy-activity.json
-│   ├── lab-6-semi-structured/
-│   │   ├── json-query.sql
-│   │   ├── parquet-query.py
-│   │   └── semi-structured-snowpark.py
-│   ├── lab-7-snowpark-udf/
-│   │   ├── data-cleansing-udf.py
-│   │   └── register-udf-snowflake.py
-│   └── case-study/
-│       ├── log-ingestion.py
-│       ├── json-transformation.py
-│       └── analytics-pipeline.py
+├── 02-data-ingestion-movement/
+│   ├── README.md
+│   ├── topics/
+│   │   ├── 01-copy-into-external-stages/
+│   │   ├── 02-snowpipe-automation/
+│   │   ├── 03-azure-data-factory-integration/
+│   │   └── 04-semi-structured-data/
+│   └── labs/
+│       ├── lab-01-copy-into-adls-snowflake/
+│       ├── lab-02-snowpipe-event-grid-setup/
+│       ├── lab-03-adf-snowflake-orchestration/
+│       └── lab-04-json-parquet-processing/
 │
-├── day-3-performance-optimization/
-│   ├── README.md                      # Day 3 objectives & overview
-│   ├── lab-1-warehouse-scaling/
-│   │   ├── warehouse-scaling.sql
-│   │   ├── performance-test.py
-│   │   └── snowpark-benchmark.py
-│   ├── lab-2-snowpipe-monitoring/
-│   │   ├── snowpipe-azure-blob.sql
-│   │   ├── copy-history-monitor.sql
-│   │   └── snowpipe-monitoring.py
-│   ├── lab-3-azure-functions/
-│   │   ├── function-trigger.py
-│   │   ├── function-app.json
-│   │   └── snowpipe-automation.py
-│   ├── lab-4-query-optimization/
-│   │   ├── clustering-keys.sql
-│   │   ├── materialized-views.sql
-│   │   └── snowpark-optimization.py
-│   ├── lab-5-resource-monitors/
-│   │   ├── create-resource-monitor.sql
-│   │   ├── credit-usage-alerts.sql
-│   │   └── cost-management.py
-│   ├── lab-6-query-analysis/
-│   │   ├── query-performance.sql
-│   │   ├── snowpark-analysis.py
-│   │   └── optimization-suggestions.py
-│   ├── lab-7-multi-cluster/
-│   │   ├── multi-cluster-setup.sql
-│   │   ├── concurrency-test.py
-│   │   └── snowpark-concurrent.py
-│   └── case-study/
-│       ├── bottleneck-analysis.py
-│       ├── clustering-implementation.py
-│       └── auto-scaling-setup.py
+├── 03-data-transformation-processing/
+│   ├── README.md
+│   ├── topics/
+│   │   ├── 01-pyspark-snowflake-integration/
+│   │   ├── 02-snowpark-dataframe-api/
+│   │   ├── 03-snowpark-udfs/
+│   │   ├── 04-delta-lake-integration/
+│   │   └── 05-dynamic-tables/
+│   └── labs/
+│       ├── lab-01-pyspark-transformations/
+│       ├── lab-02-snowpark-dataframe-operations/
+│       ├── lab-03-snowpark-udf-development/
+│       ├── lab-04-delta-lake-snowpark/
+│       ├── lab-05-dynamic-tables-setup/
+│       └── lab-06-stored-procedures-snowpark/
 │
-├── day-4-security-governance/
-│   ├── README.md                      # Day 4 objectives & overview
-│   ├── lab-1-azure-ad-auth/
-│   │   ├── azure-ad-integration.sql
-│   │   ├── sso-configuration.py
-│   │   └── authentication-setup.md
-│   ├── lab-2-column-security/
-│   │   ├── data-masking-policies.sql
-│   │   ├── column-masking.py
-│   │   └── snowpark-masking.py
-│   ├── lab-3-row-security/
-│   │   ├── secure-views.sql
-│   │   ├── row-level-policies.sql
-│   │   └── snowpark-rls.py
-│   ├── lab-4-cdc-streams/
-│   │   ├── create-streams.sql
-│   │   ├── tasks-scheduling.sql
-│   │   └── cdc-databricks.py
-│   ├── lab-5-key-vault/
-│   │   ├── key-vault-integration.py
-│   │   ├── secrets-management.py
-│   │   └── secure-credentials.py
-│   ├── lab-6-role-automation/
-│   │   ├── logic-apps-config.json
-│   │   ├── role-assignment.py
-│   │   └── snowpark-automation.py
-│   ├── lab-7-stored-procedures/
-│   │   ├── dynamic-masking-sp.sql
-│   │   ├── snowpark-sp.py
-│   │   └── masking-procedure.py
-│   └── case-study/
-│       ├── rbac-implementation.py
-│       ├── healthcare-masking.py
-│       └── cdc-patient-records.py
+├── 04-pipeline-orchestration-automation/
+│   ├── README.md
+│   ├── topics/
+│   │   ├── 01-elt-pipeline-design/
+│   │   ├── 02-adf-orchestration/
+│   │   ├── 03-cdc-streams-tasks/
+│   │   └── 04-azure-functions-automation/
+│   └── labs/
+│       ├── lab-01-end-to-end-elt-pipeline/
+│       ├── lab-02-cdc-streams-tasks-implementation/
+│       ├── lab-03-azure-functions-automation/
+│       └── lab-04-pipeline-monitoring-snowpark/
 │
-├── day-5-elt-pipelines/
-│   ├── README.md                      # Day 5 objectives & overview
-│   ├── lab-1-elt-pipeline/
-│   │   ├── pipeline-design.md
-│   │   ├── databricks-extract.py
-│   │   ├── snowpark-transform.py
-│   │   └── snowflake-load.py
-│   ├── lab-2-dynamic-tables/
-│   │   ├── dynamic-tables-setup.sql
-│   │   ├── incremental-processing.py
-│   │   └── snowpark-dynamic.py
-│   ├── lab-3-stored-procedures/
-│   │   ├── create-sprocs.sql
-│   │   ├── snowpark-sprocs.py
-│   │   └── automation-scripts.py
-│   ├── lab-4-zero-copy/
-│   │   ├── clone-environments.sql
-│   │   ├── testing-setup.py
-│   │   └── snowpark-cloning.py
-│   ├── lab-5-time-travel/
-│   │   ├── time-travel-queries.sql
-│   │   ├── historical-analysis.py
-│   │   └── snowpark-time-travel.py
-│   ├── lab-6-adf-orchestration/
-│   │   ├── adf-pipeline.json
-│   │   ├── snowpark-activities.py
-│   │   └── monitoring-setup.py
-│   ├── lab-7-monitoring/
-│   │   ├── pipeline-monitor.py
-│   │   ├── logging-setup.py
-│   │   └── snowpark-logging.py
-│   └── case-study/
-│       ├── retail-extract.py
-│       ├── sales-transformation.py
-│       └── snowflake-load-pipeline.py
+├── 05-performance-optimization-cost/
+│   ├── README.md
+│   ├── topics/
+│   │   ├── 01-warehouse-scaling-clustering/
+│   │   ├── 02-query-optimization-caching/
+│   │   ├── 03-resource-monitors-cost/
+│   │   └── 04-zero-copy-cloning-time-travel/
+│   └── labs/
+│       ├── lab-01-warehouse-scaling-performance/
+│       ├── lab-02-query-optimization-clustering/
+│       ├── lab-03-snowpark-performance-analysis/
+│       ├── lab-04-resource-monitors-setup/
+│       └── lab-05-advanced-features-implementation/
 │
-├── config/
-│   ├── snowflake-connection.json      # Snowflake connection parameters
-│   ├── databricks-config.json         # Databricks configuration
-│   └── azure-credentials.json         # Azure service principal details
+├── 06-security-governance-compliance/
+│   ├── README.md
+│   ├── topics/
+│   │   ├── 01-azure-ad-rbac-integration/
+│   │   ├── 02-column-level-security/
+│   │   ├── 03-row-level-security/
+│   │   ├── 04-azure-key-vault-integration/
+│   │   └── 05-data-masking-encryption/
+│   └── labs/
+│       ├── lab-01-azure-ad-sso-configuration/
+│       ├── lab-02-column-level-security-masking/
+│       ├── lab-03-row-level-security-views/
+│       ├── lab-04-key-vault-secrets-management/
+│       └── lab-05-automated-role-management/
 │
-└── utilities/
-    ├── common-functions.py            # Shared utility functions
-    ├── error-handling.py              # Error handling utilities
-    ├── logging-config.py              # Logging configuration
-    └── performance-utils.py           # Performance monitoring utilities
+├── 07-advanced-analytics-ml-sharing/
+│   ├── README.md
+│   ├── topics/
+│   │   ├── 01-snowpark-ml-databricks/
+│   │   ├── 02-power-bi-integration/
+│   │   ├── 03-azure-synapse-link/
+│   │   ├── 04-secure-data-sharing/
+│   │   └── 05-disaster-recovery-replication/
+│   └── labs/
+│       ├── lab-01-machine-learning-snowpark/
+│       ├── lab-02-power-bi-dashboard-snowflake/
+│       ├── lab-03-azure-synapse-integration/
+│       ├── lab-04-secure-data-sharing-setup/
+│       ├── lab-05-database-replication-dr/
+│       └── lab-06-snowflake-marketplace-publishing/
+│
+├── 08-capstone-project/
+│   ├── README.md
+│   ├── healthcare-analytics-platform/
+│   │   ├── 01-data-ingestion/
+│   │   ├── 02-data-transformation/
+│   │   ├── 03-security-implementation/
+│   │   ├── 04-pipeline-orchestration/
+│   │   ├── 05-performance-optimization/
+│   │   ├── 06-analytics-visualization/
+│   │   └── 07-data-sharing-dr/
+│   └── retail-data-warehouse/
+│       ├── 01-sales-data-pipeline/
+│       ├── 02-real-time-analytics/
+│       ├── 03-ml-forecasting/
+│       └── 04-power-bi-reporting/
+│
+│
+├── case-studies/
+│   ├── 01-sql-server-migration/
+│   │   ├── README.md
+│   │   ├── migration-strategy.md
+│   │   ├── implementation-steps.md
+│   │   └── code/
+│   │       ├── databricks-notebooks/
+│   │       ├── snowflake-scripts/
+│   │       └── azure-configs/
+│   │
+│   ├── 02-real-time-log-analytics/
+│   │   ├── README.md
+│   │   ├── architecture-diagram.md
+│   │   ├── implementation-steps.md
+│   │   └── code/
+│   │       ├── snowpipe-config/
+│   │       ├── databricks-transformation/
+│   │       └── event-grid-setup/
+│   │
+│   ├── 03-optimize-analytics-dashboard/
+│   │   ├── README.md
+│   │   ├── performance-analysis.md
+│   │   ├── optimization-strategy.md
+│   │   └── code/
+│   │       ├── query-optimization/
+│   │       ├── clustering-implementation/
+│   │       └── azure-functions-scaling/
+│   │
+│   ├── 04-secure-healthcare-platform/
+│   │   ├── README.md
+│   │   ├── security-requirements.md
+│   │   ├── compliance-checklist.md
+│   │   └── code/
+│   │       ├── rbac-implementation/
+│   │       ├── data-masking/
+│   │       ├── row-level-security/
+│   │       └── cdc-setup/
+│   │
+│   ├── 05-retail-data-warehouse/
+│   │   ├── README.md
+│   │   ├── data-model.md
+│   │   ├── kpi-definitions.md
+│   │   └── code/
+│   │       ├── elt-pipeline/
+│   │       ├── data-transformation/
+│   │       └── azure-sql-integration/
+│   │
+│   ├── 06-real-time-sales-analytics/
+│   │   ├── README.md
+│   │   ├── dashboard-design.md
+│   │   ├── ml-forecasting.md
+│   │   └── code/
+│   │       ├── power-bi-reports/
+│   │       ├── snowpark-preprocessing/
+│   │       ├── ml-model-training/
+│   │       └── real-time-pipeline/
+│   │
+│   └── 07-comprehensive-healthcare-platform/
+│       ├── README.md
+│       ├── architecture-overview.md
+│       ├── implementation-guide.md
+│       └── code/
+│           ├── end-to-end-pipeline/
+│           ├── security-implementation/
+│           ├── performance-optimization/
+│           ├── power-bi-visualization/
+│           └── disaster-recovery/
+│
+├── templates/
+│   ├── snowflake/
+│   │   ├── database-setup-template.sql
+│   │   ├── role-security-template.sql
+│   │   └── warehouse-config-template.sql
+│   ├── databricks/
+│   │   ├── notebook-template.py
+│   │   ├── cluster-config.json
+│   │   └── pipeline-template.json
+│   └── azure/
+│       ├── arm-templates/
+│       ├── terraform/
+│       └── bicep/
+│
+├── scripts-utilities/
+│   ├── monitoring/
+│   │   ├── snowflake-usage-monitor.py
+│   │   ├── cost-optimization-alerts.py
+│   │   └── performance-metrics-collector.py
+│   ├── automation/
+│   │   ├── user-provisioning.ps1
+│   │   ├── resource-cleanup.py
+│   │   └── backup-automation.sql
+│   └── data-quality/
+│       ├── data-validation-checks.py
+│       ├── anomaly-detection.sql
+│       └── data-lineage-tracker.py
+│
+├── docs/
+│   ├── architecture/
+│   │   ├── system-architecture.md
+│   │   ├── data-flow-diagrams.md
+│   │   └── integration-patterns.md
+│   ├── best-practices/
+│   │   ├── snowflake-best-practices.md
+│   │   ├── databricks-best-practices.md
+│   │   └── security-best-practices.md
+│   └── references/
+│       ├── snowflake-official-docs.md
+│       ├── azure-documentation.md
+│       └── useful-links.md
+│
+├── samples/
+│   ├── sample-datasets/
+│   │   ├── healthcare/
+│   │   ├── retail/
+│   │   └── log-data/
+│   ├── sample-queries/
+│   │   ├── snowpark-python/
+│   │   ├── snowpark-scala/
+│   │   └── pyspark-notebooks/
+│   └── sample-configs/
+│       ├── snowflake-configs/
+│       ├── databricks-configs/
+│       └── azure-configs/
+│
+└── README.md
 ```

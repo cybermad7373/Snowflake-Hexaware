@@ -1,1 +1,0 @@
-Day 3 README.md shifts focus to the critical aspects of performance tuning and cost optimization in Snowflake environments. This document outlines how you'll learn to scale virtual warehouses for different workload patterns, implement clustering strategies for large tables, automate performance monitoring, and optimize queries for both speed and cost efficiency.
