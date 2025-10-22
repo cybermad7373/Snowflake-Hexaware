@@ -1,0 +1,13 @@
+**/.git/
+
+*.txt
+*.rtf
+*.odt
+
+*password*
+*Password*
+*PASSWORD*
+
+*.bak
+*.tmp
+*.swp
